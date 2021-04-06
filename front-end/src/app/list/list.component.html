@@ -1,0 +1,9 @@
+<div class="list">
+    <ul *ngFor="let task of taskList" class = "task__list">
+        <li *ngIf="!task.isDone" class = "list__item">
+            <div class = "btn__check">&#10003;</div>
+            {{task.title}}
+        </li>
+    </ul>
+    <app-task-form (messageEvent)="addTask($event)" class = "taskform"></app-task-form>
+</div>

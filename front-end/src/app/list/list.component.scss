@@ -1,0 +1,44 @@
+.list__item {
+    background-color: #101218;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.list__item:hover {
+    background-color: #292929;
+}
+
+.task__list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0.2em 0;
+}
+
+.btn__check {
+    margin-right: 2rem;
+    border: 3px solid #919191;
+    border-radius: 50%;
+    width: 1.1rem;
+    height: 1.1rem;
+    color: transparent;
+    text-align: center;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+.btn__check:hover {
+    color: #919191;
+}
+
+.taskform {
+    width: calc(100% - 8rem);
+    position: fixed;
+    bottom: 15px;
+    left: 0;
+    padding: 0 4rem;
+
+}
