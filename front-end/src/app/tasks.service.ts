@@ -1,29 +1,29 @@
-import { TmplAstElement } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Task } from './models/Task';
+import { AngularFirestore, DocumentChangeAction } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TasksService {
 
-  constructor() { }
+  constructor(private db: AngularFirestore) {}
 
-  private tasks: Task[] = [{
-    title: "Tarea 1",
-    description: "Hacer la tarea 1",
-    isDone: false
-  }];
-
-  getTasks(): Task[] {
-    return this.tasks;
+  getTasks(): Observable<Task[]> {
+    return this.db.collection<Task>('Tasks').valueChanges({idField: 'id'});
   }
 
   addTask(task: Task): boolean {
-    return !! this.tasks.push(task);
+    return !!this.db.collection('Tasks').add(task);
   }
 
-  markTaskAsDone(task: Task): boolean {
-    return !!this.tasks.splice(1, this.tasks.indexOf(task));
+  updateTask(id: string, data: Partial<Task>): boolean {
+    this.db.collection('Tasks').doc(id).update(data);
+    return true;
+  }
+
+  deleteTask(id: string) {
+    this.db.collection('Tasks').doc(id).delete();
   }
 }

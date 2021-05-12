@@ -6,16 +6,35 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+}
+
+.icon {
+    cursor: pointer;
 }
 
 .list__item:hover {
     background-color: #292929;
 }
 
+h3 {
+    color: #D3D8E1;
+}
+
+
 .task__list {
     list-style-type: none;
     padding: 0;
     margin: 0.2em 0;
+}
+
+.task__list__container {
+    margin-bottom: 2rem;
+}
+
+.task__interior__left {
+    display: flex;
+    flex-direction: row;
 }
 
 .btn__check {
@@ -40,5 +59,21 @@
     bottom: 15px;
     left: 0;
     padding: 0 4rem;
+}
 
+.top-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 2rem;
+    align-items: flex-end;
+}
+
+.mat-button-toggle-appearance-standard {
+    background-color: #0B0E11;
+}
+
+.mat-expansion-panel {
+    background-color: #1d212c;
 }

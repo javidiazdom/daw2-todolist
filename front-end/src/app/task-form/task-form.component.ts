@@ -20,9 +20,10 @@ export class TaskFormComponent implements OnInit {
 
   sendMessage() {
     this.messageEvent.emit({
-      title: this.taskName,
+      name: this.taskName,
       description: '',
-      isDone: false
+      status: 'pending',
+      creationDate: Date.now()
     });
   }
 

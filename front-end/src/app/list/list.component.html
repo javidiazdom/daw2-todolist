@@ -1,9 +1,49 @@
 <div class="list">
-    <ul *ngFor="let task of taskList" class = "task__list">
-        <li *ngIf="!task.isDone" class = "list__item">
-            <div class = "btn__check">&#10003;</div>
-            {{task.title}}
-        </li>
-    </ul>
+    <div class = "top-container">
+        <h3>Pending</h3>
+        <mat-button-toggle-group name="sort" class = "toggle">
+            <mat-button-toggle (click)="sortList(sortByDate)" value="date">Date</mat-button-toggle>
+            <mat-button-toggle (click)="sortList(sortByName)" value="name">Name</mat-button-toggle>
+            <mat-button-toggle value="sortList(sortByStatus)">Status</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+    <div class = "task__list__container">
+        <ul *ngFor="let task of taskList" class = "task__list">
+            <li *ngIf="task.status == 'pending'" class = "list__item">
+                <div class="task__interior__left">
+                    <div class = "btn__check" (click)="markTaskAsInProgress(task)">&#10003;</div>
+                    {{task.name}}
+                </div>
+                <mat-icon class="icon" (click)="deleteTask(task)">delete_sweep</mat-icon>
+            </li>
+        </ul>
+    </div>
+    <h3>In progress</h3>
+    <div class = "task__list__container">
+        <ul *ngFor="let task of taskList" class = "task__list">
+            <li *ngIf="task.status == 'inProgress'" class = "list__item">
+                <div class="task__interior__left">
+                    <div class = "btn__check" (click)="markTaskAsCompleted(task)">&#10003;</div>
+                    {{task.name}}
+                </div>
+                <mat-icon class="icon" (click)="deleteTask(task)">delete_sweep</mat-icon>
+            </li>
+        </ul>
+    </div>
+    <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Tareas completadas
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul *ngFor="let task of taskList" class = "task__list">
+            <li *ngIf="task.status == 'done'" class = "list__item">
+                <div class="task__interior__left">
+                    {{task.name}}
+                </div>
+                <mat-icon class="icon" (click)="deleteTask(task)">delete_sweep</mat-icon>
+            </li>
+        </ul>
+      </mat-expansion-panel>
     <app-task-form (messageEvent)="addTask($event)" class = "taskform"></app-task-form>
 </div>
