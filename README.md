@@ -6,4 +6,8 @@ This is a school project for University of Las Palmas de Gran Canaria. Its made 
 
 ## How to run 
 
-Just cd into `backend` and run npm start. Same for frontend.
+Just cd into `frontend` and run ng seve.
+
+## Hosting
+
+This app is hosted at https://daw2-todo-list.web.app/
